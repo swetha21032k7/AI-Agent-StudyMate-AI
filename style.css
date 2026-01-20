@@ -1,0 +1,466 @@
+/* StudyMate AI - Custom Styles */
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #06b6d4, #3b82f6);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #22d3ee, #60a5fa);
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Loading spinner */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-top-color: #06b6d4;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Fade in animation */
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Slide up animation */
+.slide-up {
+    animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Pulse animation */
+.pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+/* Gradient text */
+.gradient-text {
+    background: linear-gradient(135deg, #06b6d4, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Glass morphism card */
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+}
+
+/* Session card styles */
+.session-card {
+    transition: all 0.3s ease;
+}
+
+.session-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.session-card.completed {
+    opacity: 0.7;
+}
+
+.session-card.completed .session-content {
+    text-decoration: line-through;
+}
+
+/* Subject difficulty badges */
+.badge-easy {
+    background: linear-gradient(135deg, #10b981, #34d399);
+}
+
+.badge-medium {
+    background: linear-gradient(135deg, #f59e0b, #fbbf24);
+}
+
+.badge-hard {
+    background: linear-gradient(135deg, #ef4444, #f87171);
+}
+
+/* Progress bar animation */
+.progress-bar {
+    transition: width 0.5s ease-in-out;
+}
+
+/* Checkbox custom styling */
+.custom-checkbox {
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.custom-checkbox:checked {
+    background: linear-gradient(135deg, #10b981, #34d399);
+    border-color: #10b981;
+}
+
+.custom-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.custom-checkbox:hover {
+    border-color: #06b6d4;
+}
+
+/* Day tabs */
+.day-tab {
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.day-tab:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.day-tab.active {
+    background: linear-gradient(135deg, #06b6d4, #3b82f6);
+    color: white;
+}
+
+/* Toast notifications */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 16px 24px;
+    border-radius: 12px;
+    color: white;
+    font-weight: 500;
+    z-index: 1000;
+    animation: slideIn 0.3s ease-out, fadeOut 0.3s ease-in 2.7s forwards;
+}
+
+.toast.success {
+    background: linear-gradient(135deg, #10b981, #34d399);
+}
+
+.toast.error {
+    background: linear-gradient(135deg, #ef4444, #f87171);
+}
+
+.toast.info {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* Responsive sidebar */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    .sidebar.open {
+        transform: translateX(0);
+    }
+}
+
+/* Streak fire animation */
+.streak-fire {
+    animation: flicker 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+/* Color picker option */
+.color-option {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    border: 3px solid transparent;
+}
+
+.color-option:hover {
+    transform: scale(1.2);
+}
+
+.color-option.selected {
+    border-color: white;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile navigation */
+.mobile-nav-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-nav-toggle {
+        display: block;
+    }
+}
+
+/* Empty state */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.empty-state svg {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+    opacity: 0.5;
+}
+
+/* Skeleton loading */
+.skeleton {
+    background: linear-gradient(90deg, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 75%);
+    background-size: 200% 100%;
+    animation: skeleton 1.5s infinite;
+    border-radius: 8px;
+}
+
+@keyframes skeleton {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Focus states */
+input:focus, button:focus, select:focus {
+    outline: none;
+    ring: 2px;
+    ring-color: #06b6d4;
+}
+
+/* Table styles */
+.timetable-grid {
+    display: grid;
+    gap: 12px;
+}
+
+/* Difficulty selector buttons */
+.difficulty-btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.difficulty-btn.easy {
+    background: rgba(16, 185, 129, 0.2);
+    color: #34d399;
+}
+
+.difficulty-btn.easy:hover, .difficulty-btn.easy.active {
+    background: #10b981;
+    color: white;
+}
+
+.difficulty-btn.medium {
+    background: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+}
+
+.difficulty-btn.medium:hover, .difficulty-btn.medium.active {
+    background: #f59e0b;
+    color: white;
+}
+
+.difficulty-btn.hard {
+    background: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+}
+
+.difficulty-btn.hard:hover, .difficulty-btn.hard.active {
+    background: #ef4444;
+    color: white;
+}
+
+/* Modal overlay */
+.modal-overlay {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+/* Button loading state */
+.btn-loading {
+    position: relative;
+    color: transparent !important;
+}
+
+.btn-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+/* Card hover effects */
+.stat-card {
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Session type indicators */
+.session-study {
+    border-left: 4px solid #3b82f6;
+}
+
+.session-break {
+    border-left: 4px solid #9ca3af;
+    background: rgba(156, 163, 175, 0.1) !important;
+}
+
+/* Time display */
+.time-badge {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.875rem;
+    padding: 4px 8px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+}
+
+/* Navigation active state */
+.nav-item.active {
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(59, 130, 246, 0.3));
+    border-left: 3px solid #06b6d4;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .day-tab {
+        padding: 8px 12px;
+        font-size: 0.875rem;
+    }
+    
+    .stat-card {
+        padding: 16px;
+    }
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .glass-card {
+        background: white !important;
+        border: 1px solid #ddd !important;
+    }
+}

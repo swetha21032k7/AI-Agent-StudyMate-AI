@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - StudyMate AI</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-indigo-950 to-gray-900 min-h-screen font-['Inter']">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="sidebar fixed left-0 top-0 h-full w-64 bg-gray-900/80 backdrop-blur-lg border-r border-white/10 z-40">
+        <div class="p-6">
+            <div class="flex items-center space-x-2 mb-8">
+                <div class="w-10 h-10 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-xl flex items-center justify-center">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </div>
+                <span class="text-xl font-bold text-white">StudyMate AI</span>
+            </div>
+            
+            <nav class="space-y-2">
+                <a href="dashboard.html" class="nav-item active flex items-center space-x-3 px-4 py-3 rounded-xl text-white transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="timetable.html" class="nav-item flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                    <span>Timetable</span>
+                </a>
+                <a href="#" onclick="showSubjectsSection()" class="nav-item flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                    </svg>
+                    <span>Subjects</span>
+                </a>
+                <a href="#" onclick="showPreferencesSection()" class="nav-item flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    <span>Preferences</span>
+                </a>
+                <a href="#" onclick="showStatsSection()" class="nav-item flex items-center space-x-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                    </svg>
+                    <span>Statistics</span>
+                </a>
+            </nav>
+        </div>
+        
+        <div class="absolute bottom-0 left-0 right-0 p-6 border-t border-white/10">
+            <div class="flex items-center space-x-3 mb-4">
+                <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold" id="userAvatar">U</div>
+                <div>
+                    <div class="text-white font-medium" id="userName">User</div>
+                    <div class="text-gray-400 text-sm" id="userEmail">user@email.com</div>
+                </div>
+            </div>
+            <button onclick="handleLogout()" class="w-full flex items-center justify-center space-x-2 px-4 py-2 bg-red-500/20 text-red-400 rounded-lg hover:bg-red-500/30 transition-all">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                </svg>
+                <span>Logout</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <div class="md:hidden fixed top-0 left-0 right-0 h-16 bg-gray-900/80 backdrop-blur-lg border-b border-white/10 z-30 flex items-center justify-between px-4">
+        <button onclick="toggleSidebar()" class="text-white p-2">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        <span class="text-white font-bold">StudyMate AI</span>
+        <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-sm" id="mobileUserAvatar">U</div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="md:ml-64 pt-20 md:pt-8 px-4 md:px-8 pb-8">
+        <!-- Dashboard Section -->
+        <section id="dashboardSection">
+            <!-- Welcome Header -->
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-white mb-2">Welcome back, <span id="welcomeName">User</span>! 👋</h1>
+                <p class="text-gray-400">Here's your study progress overview</p>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="stat-card glass-card p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-bold text-white mb-1" id="totalSubjects">0</div>
+                    <div class="text-gray-400 text-sm">Total Subjects</div>
+                </div>
+
+                <div class="stat-card glass-card p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-600 rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white streak-fire" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-bold text-white mb-1" id="currentStreak">0</div>
+                    <div class="text-gray-400 text-sm">Day Streak 🔥</div>
+                </div>
+
+                <div class="stat-card glass-card p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-bold text-white mb-1" id="completedSessions">0</div>
+                    <div class="text-gray-400 text-sm">Completed Sessions</div>
+                </div>
+
+                <div class="stat-card glass-card p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-bold text-white mb-1" id="totalMinutes">0</div>
+                    <div class="text-gray-400 text-sm">Study Minutes</div>
+                </div>
+            </div>
+
+            <!-- Quick Actions & Today's Schedule -->
+            <div class="grid lg:grid-cols-3 gap-6 mb-8">
+                <!-- Quick Actions -->
+                <div class="glass-card p-6">
+                    <h3 class="text-xl font-bold text-white mb-4">Quick Actions</h3>
+                    <div class="space-y-3">
+                        <button onclick="showAddSubjectModal()" class="w-full flex items-center space-x-3 px-4 py-3 bg-gradient-to-r from-cyan-500/20 to-blue-600/20 text-cyan-400 rounded-xl hover:from-cyan-500/30 hover:to-blue-600/30 transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                            </svg>
+                            <span>Add Subject</span>
+                        </button>
+                        <button onclick="generateTimetable()" class="w-full flex items-center space-x-3 px-4 py-3 bg-gradient-to-r from-purple-500/20 to-pink-600/20 text-purple-400 rounded-xl hover:from-purple-500/30 hover:to-pink-600/30 transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            </svg>
+                            <span>Generate Timetable</span>
+                        </button>
+                        <button onclick="window.location.href='timetable.html'" class="w-full flex items-center space-x-3 px-4 py-3 bg-gradient-to-r from-green-500/20 to-emerald-600/20 text-green-400 rounded-xl hover:from-green-500/30 hover:to-emerald-600/30 transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>View Timetable</span>
+                        </button>
+                        <button onclick="exportData('json')" class="w-full flex items-center space-x-3 px-4 py-3 bg-gradient-to-r from-orange-500/20 to-red-600/20 text-orange-400 rounded-xl hover:from-orange-500/30 hover:to-red-600/30 transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                            </svg>
+                            <span>Export Data</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Today's Schedule -->
+                <div class="lg:col-span-2 glass-card p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-white">Today's Schedule</h3>
+                        <span class="text-gray-400 text-sm" id="todayDate"></span>
+                    </div>
+                    <div id="todaySchedule" class="space-y-3">
+                        <div class="text-center py-8 text-gray-400">
+                            <p>No sessions scheduled for today</p>
+                            <button onclick="generateTimetable()" class="mt-4 text-cyan-400 hover:text-cyan-300">Generate a timetable to get started</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subject Progress -->
+            <div class="glass-card p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-bold text-white">Subject Progress</h3>
+                    <button onclick="showSubjectsSection()" class="text-cyan-400 hover:text-cyan-300 text-sm">View All</button>
+                </div>
+                <div id="subjectProgress" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="text-center py-8 text-gray-400 col-span-full">
+                        <p>No subjects added yet</p>
+                        <button onclick="showAddSubjectModal()" class="mt-4 text-cyan-400 hover:text-cyan-300">Add your first subject</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Subjects Section (Hidden by default) -->
+        <section id="subjectsSection" class="hidden">
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h1 class="text-3xl font-bold text-white mb-2">Subjects</h1>
+                    <p class="text-gray-400">Manage your study subjects</p>
+                </div>
+                <button onclick="showAddSubjectModal()" class="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-cyan-500/30 transition-all flex items-center space-x-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                    </svg>
+                    <span>Add Subject</span>
+                </button>
+            </div>
+            <div id="subjectsList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Subjects will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Preferences Section (Hidden by default) -->
+        <section id="preferencesSection" class="hidden">
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-white mb-2">Preferences</h1>
+                <p class="text-gray-400">Customize your study settings</p>
+            </div>
+            <div class="max-w-2xl">
+                <div class="glass-card p-8">
+                    <form id="preferencesForm" onsubmit="savePreferences(event)">
+                        <div class="mb-6">
+                            <label class="block text-white font-medium mb-3">Daily Study Hours</label>
+                            <input type="range" id="dailyHours" min="1" max="12" value="4" class="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer" oninput="updateRangeValue('dailyHours', 'dailyHoursValue')">
+                            <div class="flex justify-between mt-2">
+                                <span class="text-gray-400 text-sm">1 hour</span>
+                                <span class="text-cyan-400 font-bold" id="dailyHoursValue">4 hours</span>
+                                <span class="text-gray-400 text-sm">12 hours</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-white font-medium mb-3">Session Duration</label>
+                            <div class="grid grid-cols-3 gap-4">
+                                <button type="button" onclick="selectSessionDuration(25)" class="session-duration-btn px-4 py-3 rounded-xl border-2 border-white/20 text-white hover:border-cyan-500 transition-all" data-value="25">
+                                    25 min
+                                </button>
+                                <button type="button" onclick="selectSessionDuration(45)" class="session-duration-btn px-4 py-3 rounded-xl border-2 border-white/20 text-white hover:border-cyan-500 transition-all" data-value="45">
+                                    45 min
+                                </button>
+                                <button type="button" onclick="selectSessionDuration(60)" class="session-duration-btn px-4 py-3 rounded-xl border-2 border-white/20 text-white hover:border-cyan-500 transition-all" data-value="60">
+                                    60 min
+                                </button>
+                            </div>
+                            <input type="hidden" id="sessionDuration" value="25">
+                        </div>
+                        
+                        <div class="mb-8">
+                            <label class="block text-white font-medium mb-3">Break Duration</label>
+                            <div class="grid grid-cols-3 gap-4">
+                                <button type="button" onclick="selectBreakDuration(5)" class="break-duration-btn px-4 py-3 rounded-xl border-2 border-white/20 text-white hover:border-cyan-500 transition-all" data-value="5">
+                                    5 min
+                                </button>
+                                <button type="button" onclick="selectBreakDuration(10)" class="break-duration-btn px-4 py-3 rounded-xl border-2 border-white/20 text-white hover:border-cyan-500 transition-all" data-value="10">
+                                    10 min
+                                </button>
+                                <button type="button" onclick="selectBreakDuration(15)" class="break-duration-btn px-4 py-3 rounded-xl border-2 border-white/20 text-white hover:border-cyan-500 transition-all" data-value="15">
+                                    15 min
+                                </button>
+                            </div>
+                            <input type="hidden" id="breakDuration" value="5">
+                        </div>
+                        
+                        <button type="submit" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-xl font-semibold hover:shadow-lg hover:shadow-cyan-500/30 transition-all">
+                            Save Preferences
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Statistics Section (Hidden by default) -->
+        <section id="statsSection" class="hidden">
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold text-white mb-2">Statistics</h1>
+                <p class="text-gray-400">Track your study progress and achievements</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <!-- Weekly Overview -->
+                <div class="glass-card p-6">
+                    <h3 class="text-xl font-bold text-white mb-4">Weekly Overview</h3>
+                    <div id="weeklyChart" class="h-48 flex items-end justify-between gap-2">
+                        <!-- Chart bars will be added here -->
+                    </div>
+                    <div class="flex justify-between mt-2 text-gray-400 text-sm">
+                        <span>Mon</span>
+                        <span>Tue</span>
+                        <span>Wed</span>
+                        <span>Thu</span>
+                        <span>Fri</span>
+                        <span>Sat</span>
+                        <span>Sun</span>
+                    </div>
+                </div>
+                
+                <!-- Subject Distribution -->
+                <div class="glass-card p-6">
+                    <h3 class="text-xl font-bold text-white mb-4">Subject Distribution</h3>
+                    <div id="subjectDistribution" class="space-y-3">
+                        <!-- Subject bars will be added here -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Export Options -->
+            <div class="glass-card p-6">
+                <h3 class="text-xl font-bold text-white mb-4">Export Data</h3>
+                <div class="flex flex-wrap gap-4">
+                    <button onclick="exportData('json')" class="px-6 py-3 bg-gradient-to-r from-blue-500/20 to-indigo-600/20 text-blue-400 rounded-xl hover:from-blue-500/30 hover:to-indigo-600/30 transition-all flex items-center space-x-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                        <span>Export as JSON</span>
+                    </button>
+                    <button onclick="exportData('csv')" class="px-6 py-3 bg-gradient-to-r from-green-500/20 to-emerald-600/20 text-green-400 rounded-xl hover:from-green-500/30 hover:to-emerald-600/30 transition-all flex items-center space-x-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                        <span>Export Timetable as CSV</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add Subject Modal -->
+    <div id="addSubjectModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm">
+        <div class="bg-gray-900 rounded-2xl p-8 w-full max-w-md mx-4 border border-white/20 relative">
+            <button onclick="hideAddSubjectModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <h2 class="text-2xl font-bold text-white mb-6">Add New Subject</h2>
+            <form id="addSubjectForm" onsubmit="handleAddSubject(event)">
+                <div class="mb-4">
+                    <label class="block text-gray-300 text-sm font-medium mb-2">Subject Name</label>
+                    <input type="text" id="subjectName" required class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500" placeholder="e.g., Mathematics">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-300 text-sm font-medium mb-2">Weekly Hours</label>
+                    <input type="number" id="weeklyHours" required min="1" max="40" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500" placeholder="e.g., 5">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-300 text-sm font-medium mb-2">Difficulty</label>
+                    <div class="flex gap-3">
+                        <button type="button" onclick="selectDifficulty('easy')" class="difficulty-btn easy flex-1">Easy</button>
+                        <button type="button" onclick="selectDifficulty('medium')" class="difficulty-btn medium flex-1 active">Medium</button>
+                        <button type="button" onclick="selectDifficulty('hard')" class="difficulty-btn hard flex-1">Hard</button>
+                    </div>
+                    <input type="hidden" id="subjectDifficulty" value="medium">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-300 text-sm font-medium mb-2">Color</label>
+                    <div class="flex gap-3 flex-wrap" id="colorPicker">
+                        <button type="button" onclick="selectColor('#3B82F6')" class="color-option selected" style="background: #3B82F6"></button>
+                        <button type="button" onclick="selectColor('#10B981')" class="color-option" style="background: #10B981"></button>
+                        <button type="button" onclick="selectColor('#F59E0B')" class="color-option" style="background: #F59E0B"></button>
+                        <button type="button" onclick="selectColor('#EF4444')" class="color-option" style="background: #EF4444"></button>
+                        <button type="button" onclick="selectColor('#8B5CF6')" class="color-option" style="background: #8B5CF6"></button>
+                        <button type="button" onclick="selectColor('#EC4899')" class="color-option" style="background: #EC4899"></button>
+                        <button type="button" onclick="selectColor('#06B6D4')" class="color-option" style="background: #06B6D4"></button>
+                        <button type="button" onclick="selectColor('#84CC16')" class="color-option" style="background: #84CC16"></button>
+                    </div>
+                    <input type="hidden" id="subjectColor" value="#3B82F6">
+                </div>
+                <div id="addSubjectError" class="hidden mb-4 p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300 text-sm"></div>
+                <button type="submit" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/30 transition-all">
+                    Add Subject
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Subject Modal -->
+    <div id="editSubjectModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm">
+        <div class="bg-gray-900 rounded-2xl p-8 w-full max-w-md mx-4 border border-white/20 relative">
+            <button onclick="hideEditSubjectModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <h2 class="text-2xl font-bold text-white mb-6">Edit Subject</h2>
+            <form id="editSubjectForm" onsubmit="handleEditSubject(event)">
+                <input type="hidden" id="editSubjectId">
+                <div class="mb-4">
+                    <label class="block text-gray-300 text-sm font-medium mb-2">Subject Name</label>
+                    <input type="text" id="editSubjectName" required class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-300 text-sm font-medium mb-2">Weekly Hours</label>
+                    <input type="number" id="editWeeklyHours" required min="1" max="40" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-300 text-sm font-medium mb-2">Difficulty</label>
+                    <div class="flex gap-3">
+                        <button type="button" onclick="selectEditDifficulty('easy')" class="edit-difficulty-btn difficulty-btn easy flex-1">Easy</button>
+                        <button type="button" onclick="selectEditDifficulty('medium')" class="edit-difficulty-btn difficulty-btn medium flex-1">Medium</button>
+                        <button type="button" onclick="selectEditDifficulty('hard')" class="edit-difficulty-btn difficulty-btn hard flex-1">Hard</button>
+                    </div>
+                    <input type="hidden" id="editSubjectDifficulty" value="medium">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-300 text-sm font-medium mb-2">Color</label>
+                    <div class="flex gap-3 flex-wrap" id="editColorPicker">
+                        <button type="button" onclick="selectEditColor('#3B82F6')" class="edit-color-option color-option" style="background: #3B82F6"></button>
+                        <button type="button" onclick="selectEditColor('#10B981')" class="edit-color-option color-option" style="background: #10B981"></button>
+                        <button type="button" onclick="selectEditColor('#F59E0B')" class="edit-color-option color-option" style="background: #F59E0B"></button>
+                        <button type="button" onclick="selectEditColor('#EF4444')" class="edit-color-option color-option" style="background: #EF4444"></button>
+                        <button type="button" onclick="selectEditColor('#8B5CF6')" class="edit-color-option color-option" style="background: #8B5CF6"></button>
+                        <button type="button" onclick="selectEditColor('#EC4899')" class="edit-color-option color-option" style="background: #EC4899"></button>
+                        <button type="button" onclick="selectEditColor('#06B6D4')" class="edit-color-option color-option" style="background: #06B6D4"></button>
+                        <button type="button" onclick="selectEditColor('#84CC16')" class="edit-color-option color-option" style="background: #84CC16"></button>
+                    </div>
+                    <input type="hidden" id="editSubjectColor" value="#3B82F6">
+                </div>
+                <div id="editSubjectError" class="hidden mb-4 p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300 text-sm"></div>
+                <div class="flex gap-3">
+                    <button type="button" onclick="deleteSubject()" class="flex-1 py-3 bg-red-500/20 text-red-400 rounded-lg font-semibold hover:bg-red-500/30 transition-all">
+                        Delete
+                    </button>
+                    <button type="submit" class="flex-1 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/30 transition-all">
+                        Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer" class="fixed bottom-4 right-4 z-50"></div>
+
+    <script src="js/app.js"></script>
+    <script>
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuth();
+            loadDashboard();
+            
+            // Set today's date
+            const today = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('todayDate').textContent = today.toLocaleDateString('en-US', options);
+        });
+    </script>
+</body>
+</html>
